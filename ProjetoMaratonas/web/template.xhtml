@@ -14,11 +14,21 @@
     <h:body>
 
         <div id="top">
-            <ui:insert name="top">lucas mauricio pfvr coloca um banner pra nois</ui:insert>
+            <h:graphicImage library="imgs" name="coding.png" />
+            <ui:insert name="top">Gerenciamento de Maratona de Programação</ui:insert>
+            <h:graphicImage library="imgs" name="coding.png" />
         </div>
         <div>
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
+                <ui:insert name="left">
+                    <h:form>
+                        <h:panelGrid>
+                            <h:commandLink value="Novo Aluno"  />
+                            <h:commandLink value="Nova Instituicao"  />
+                            <h:commandLink value="Nova Maratona"  />
+                        </h:panelGrid>
+                    </h:form>
+                </ui:insert>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>

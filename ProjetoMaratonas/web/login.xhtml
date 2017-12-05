@@ -5,14 +5,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Login x LucasM</title>
+        <title>Login - Gerenciamento de Maratonas dr programação</title>
     </h:head>
     <h:body>
         <ui:composition template="./template.xhtml">
             <ui:define name="content">
                 <h2>Área Administrativa</h2>
                 <h:form>    
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="3">
                 <p:outputLabel value="Login" for="login"/>
                     <p:inputText id="login"
                                  value="#{usuarioBean.usuario.login}" required="true"/>
