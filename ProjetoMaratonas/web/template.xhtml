@@ -6,22 +6,30 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet library="css" name="default.css"/>
-        <h:outputStylesheet library="css" name="cssLayout.css"/>
-        <title>Maratom</title>
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="cssLayout.css" library="css"/>
+        <title>Sistema de Maratonas</title>
     </h:head>
 
     <h:body>
+
         <div id="top">
-            <ui:insert name="top">Sistema de Maratonas</ui:insert>
+            <ui:insert name="top">lucas mauricio pfvr coloca um banner pra nois</ui:insert>
         </div>
-
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
+        <div>
+            <div id="left">
+                <ui:insert name="left">Left</ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
         </div>
-
         <div id="bottom">
-            <ui:include src="/footer.xhtml"/>
+            Lucas Figueiredo<br />
+            Lucas Maurício<br />
+            Rafael Cavalcante
         </div>
+
     </h:body>
+
 </html>

@@ -1,25 +1,51 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package maratonas.bean;
 
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import maratonas.entity.Usuario;
+import session.SessionContext;
 
-/**
- *
- * @author Lucas
- */
-@Named(value = "usuarioBean")
-@Dependent
-public class UsuarioBean {
+@Named
+@SessionScoped
+public class UsuarioBean implements Serializable {
+    private static final String LOGIN = "fatec";
+    private static final String PASSWORD = "123";
+    private Usuario usuario = new Usuario();
 
-    /**
-     * Creates a new instance of UsuarioBean
-     */
     public UsuarioBean() {
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getMessage() {
+        SessionContext session = SessionContext.getInstance();
+        String message = (String) session.getAttribute("message");
+        return message;
+    }
+
     
+    public String autenticar() {
+        SessionContext session = SessionContext.getInstance();
+        if (usuario.getLogin().equals(LOGIN) && usuario.getSenha().equals(PASSWORD)) {
+            session.setAttribute("usuario", usuario);
+            return "/protected/index";
+        } else {
+            this.sair();
+        }
+        session.setAttribute("message", "Login/senha inválidos");
+        return null;
+    }
+    
+    public String sair() {
+        SessionContext session = SessionContext.getInstance();
+        session.encerrarSessao();
+        return "/login";
+    }
 }

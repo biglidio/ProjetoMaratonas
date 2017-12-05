@@ -8,24 +8,24 @@
         <title>Login</title>
     </h:head>
     <h:body>
-        <ui:composition template="./Template_basico.xhtml">
+        <ui:composition template="./template.xhtml">
             <ui:define name="content">
                 <h2>Área Administrativa</h2>
                 <h:form>    
-            <h:panelGrid columns="1">
+            <h:panelGrid columns="2">
                 <p:outputLabel value="Login" for="login"/>
                     <p:inputText id="login"
-                                 value="#{usuarioBeans.usuario.login}" required="true"/>
+                                 value="#{usuarioBean.usuario.login}" required="true"/>
                     <h:message for="login" styleClass="erro"/>
                 <p:outputLabel value="Senha" for="password"/>
                     <p:inputText id="password"
-                    value="#{usuarioBeans.usuario.senha}" required="true"/>
+                    value="#{usuarioBean.usuario.senha}" required="true"/>
                     <h:message for="password" styleClass="erro"/>
             </h:panelGrid>
                      <p:commandButton value="Entrar"
                             icon="" ajax="false"
                             iconPos="right"
-                            action="#{usuarioBeans.autenticar()}"/>
+                            action="#{usuarioBean.autenticar()}"/>
                 <p:commandButton value="Cadastro"
                             icon="" ajax="false"
                             iconPos="right"
