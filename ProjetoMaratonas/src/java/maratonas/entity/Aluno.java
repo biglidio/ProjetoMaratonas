@@ -1,57 +1,47 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package maratonas.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
- * @author Administrador
+ * @author lucas
  */
-@NamedQueries ({
-    @NamedQuery(name = "Aluno.listarAluno", query = "select a from Aluno a where a.fk_cd_entidade = ?1 and m.id = ?2")
+@NamedQueries({
+    @NamedQuery(name = "Aluno.listarTodos", query = "select a from Aluno a order by a.nome"),
+    @NamedQuery(name = "Aluno.consultarPorNome",  query = "select a from Aluno a where a.nome like ?1 order by a.nome")
 })
-
 @Entity
-public class Aluno extends AbstractEntity{
+public class Aluno extends AbstractEntity {
+    private String nome;
+    private String ra;
+    private Integer idade;
 
-@Column(length = 60)
-private String nm_aluno;
-
-@ManyToOne
-private Entidade entidade = new Entidade();
-
-
-
-public Aluno() {
-}
-
-    public String getNm_aluno() {
-        return nm_aluno;
+    public Aluno() {
     }
-
-    public void setNm_aluno(String nm_aluno) {
-        this.nm_aluno = nm_aluno;
+    
+    public String getNome(){
+        return nome;
     }
-    public Entidade getEntidade() {
-        return entidade;
+    public void setNome(String nome){
+        this.nome = nome;
     }
-
-    public void setEntidade(Entidade entidade) {
-        this.entidade = entidade;
+    public String getRa(){
+        return ra;
     }
+    public void setRa(String ra){
+        this.ra = ra;
+    }
+    public Integer getIdade(){
+        return idade;
+    }
+    public void setIdade(Integer idade){
+        this.idade = idade;
+    }
+    
     
 }

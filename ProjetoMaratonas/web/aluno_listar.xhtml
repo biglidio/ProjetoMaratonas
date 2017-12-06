@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./_template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <h:form>
+            <h:inputText value="#{alunoBean.aluno.nome}" p:placeholder="Nome do aluno"/>
+            <h:commandButton value="Procurar" action="#{aluno.procurar}"/>
+            <h:dataTable value="#{alunoBean.alunos}" var="a" styleClass="tabela"
+                         headerClass="tabelaHeader" captionClass="tabelaCaption"
+                         rowClasses="linhaPar,linhaImpar">
+                <f:facet name="caption">Alunos Cadastrados</f:facet>
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputText value="#{a.nome}" style="text-align: left"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">RA</f:facet>
+                    <h:outputText value="#{a.ra}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Idade</f:facet>
+                    <h:outputText value="#{a.idade}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Editar</f:facet>
+                    <h:commandButton image="#{resource['imgs/editar_icon.png']}" alt="Editar" title="Editar" action="#{alunoBean.editar(a)}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Excluir</f:facet>
+                    <h:commandButton image="#{resource['imgs/excluir_icon.png']}" alt="Excluir" title="Excluir" action="#{alunoBean.excluir(a)}" onclick="return confirm('Confirma a exclusao?')"/>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Novo aluno" action="#{alunoBean.paginaNovoAluno}"/>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

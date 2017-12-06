@@ -15,7 +15,7 @@
 
         <div id="top">
             <h:graphicImage library="imgs" name="coding.png" />
-            <ui:insert name="top">Gerenciamento de Maratona de Programação</ui:insert>
+            <ui:insert name="top">Sistema de Maratonas</ui:insert>
             <h:graphicImage library="imgs" name="coding.png" />
         </div>
         <div>
@@ -23,9 +23,9 @@
                 <ui:insert name="left">
                     <h:form>
                         <h:panelGrid>
-                            <h:commandLink value="Novo Aluno"  />
-                            <h:commandLink value="Nova Instituicao"  />
-                            <h:commandLink value="Nova Maratona"  />
+                            <h:commandLink value="Novo Aluno" action="#{alunoBean.paginaInicial}" />
+                            <h:commandLink value="Nova Instituicao" action="#{instituicaoBean.cadastrar}"  />
+                            <h:commandLink value="Nova Maratona" action="#{maratonaBean.cadastrar}"  />
                         </h:panelGrid>
                     </h:form>
                 </ui:insert>
