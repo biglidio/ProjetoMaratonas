@@ -5,55 +5,53 @@
  */
 package maratonas.entity;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
- * @author Lucas
+ * @author Administrador
  */
+@NamedQueries ({
+    @NamedQuery(name = "Aluno.listarAluno", query = "select a from Aluno a where a.fk_cd_entidade = ?1 and m.id = ?2")
+})
+
 @Entity
-public class Aluno implements Serializable {
+public class Aluno extends AbstractEntity{
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+@Column(length = 60)
+private String nm_aluno;
 
-    public Long getId() {
-        return id;
+@ManyToOne
+private Entidade entidade = new Entidade();
+
+
+
+public Aluno() {
+}
+
+    public String getNm_aluno() {
+        return nm_aluno;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setNm_aluno(String nm_aluno) {
+        this.nm_aluno = nm_aluno;
+    }
+    public Entidade getEntidade() {
+        return entidade;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Aluno)) {
-            return false;
-        }
-        Aluno other = (Aluno) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "maratonas.entity.Usuario[ id=" + id + " ]";
+    public void setEntidade(Entidade entidade) {
+        this.entidade = entidade;
     }
     
 }

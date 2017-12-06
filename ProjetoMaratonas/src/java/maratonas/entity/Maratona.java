@@ -5,55 +5,69 @@
  */
 package maratonas.entity;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author Lucas
+ * @author Administrador
  */
+
+@NamedQueries ({
+    @NamedQuery(name = "Maratona.listarMaratona", query = "select m from Maratona m where m.fk_cd_entidade = ?1 and m.id = ?2")
+})
 @Entity
-public class Maratona implements Serializable {
+public class Maratona extends AbstractEntity {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(length = 60)
+    private String ds_objetivo;
+    @Column(length = 60)
+    private String nm_tecnologia;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Maratona)) {
-            return false;
-        }
-        Maratona other = (Maratona) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "maratonas.entity.Maratona[ id=" + id + " ]";
-    }
+   
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date data;
     
+    
+    @ManyToOne
+    private Entidade entidade = new Entidade();
+
+    public String getDs_objetivo() {
+        return ds_objetivo;
+    }
+
+    public void setDs_objetivo(String ds_objetivo) {
+        this.ds_objetivo = ds_objetivo;
+    }
+
+    public String getNm_tecnologia() {
+        return nm_tecnologia;
+    }
+
+    public void setNm_tecnologia(String nm_tecnologia) {
+        this.nm_tecnologia = nm_tecnologia;
+    }
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public void setEntidade(Entidade entidade) {
+      this.entidade = entidade;
+    }
+
 }
