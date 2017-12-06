@@ -6,21 +6,18 @@
                 xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="title">
-        Alunos - Novo Aluno
+       Instiuição - Nova Instituição 
     </ui:define>
 
     <ui:define name="content">
-        <h3>Novo Aluno</h3>
+        <h3>Nova Instituição </h3>
         <h:form>
             <h:panelGrid columns="2">
-                Nome:
-                <h:inputText value="#{alunoBean.aluno.nome}"/>
-                RA:
-                <h:inputText value="#{alunoBean.aluno.ra}"/>
-                Idade:
-                <h:inputText value="#{alunoBean.aluno.idade}"/>
+                Nome da Instituição :
+                <h:inputText value="#{InstituicaoBean.instituicao.nome}"/>
+          
             </h:panelGrid>
-            <h:commandButton value="Gravar" action="#{alunoBean.gravar()}"/>
+            <h:commandButton value="Gravar" action="#{InstituicaoBean.gravar()}"/>
             <h:commandButton value="Voltar" action="#{alunoBean.voltar}" immediate="true"/>
         </h:form>
 

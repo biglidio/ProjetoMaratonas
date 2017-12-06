@@ -6,24 +6,24 @@
                 xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="title">
-        Alunos - Novo Aluno
+        Maratonas - Editar Maratona
     </ui:define>
 
     <ui:define name="content">
-        <h3>Novo Aluno</h3>
+        
+        <h3>Editar Maratona</h3>
         <h:form>
             <h:panelGrid columns="2">
-                Nome:
-                <h:inputText value="#{alunoBean.aluno.nome}"/>
-                RA:
-                <h:inputText value="#{alunoBean.aluno.ra}"/>
-                Idade:
-                <h:inputText value="#{alunoBean.aluno.idade}"/>
+                Nome da Maratona:
+                <h:inputText value="#{MaratonaBean.maratona.nm_maratona}"/>
+                Objetivo:
+                <h:inputText value="#{MaratonaBean.maratona.ds_objetivo}"/>
+                Tecnologia:
+                <h:inputText value="#{alunoBean.maratona.nm_tecnologia}"/>
             </h:panelGrid>
-            <h:commandButton value="Gravar" action="#{alunoBean.gravar()}"/>
-            <h:commandButton value="Voltar" action="#{alunoBean.voltar}" immediate="true"/>
+            <h:commandButton value="Alterar" action="#{MaratonaBean.alterar}"/>
+            <h:commandButton value="Cancelar" action="/maratona_listar" immediate="true"/>
         </h:form>
-
     </ui:define>
 
 </ui:composition>

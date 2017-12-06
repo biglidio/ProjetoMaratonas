@@ -29,8 +29,11 @@ import javax.persistence.TemporalType;
 })
 @Entity
 public class Maratona extends AbstractEntity {
-
+    
+    
     @Column(length = 60)
+    private String nm_maratona;
+    @Column(length = 100)
     private String ds_objetivo;
     @Column(length = 60)
     private String nm_tecnologia;
@@ -42,6 +45,10 @@ public class Maratona extends AbstractEntity {
     
     @ManyToOne
     private Entidade entidade = new Entidade();
+    
+    public String getNomeMaratona() {
+        return nm_maratona; //To change body of generated methods, choose Tools | Templates.
+    }
 
     public String getDs_objetivo() {
         return ds_objetivo;
@@ -69,5 +76,7 @@ public class Maratona extends AbstractEntity {
     public void setEntidade(Entidade entidade) {
       this.entidade = entidade;
     }
+
+   
 
 }
