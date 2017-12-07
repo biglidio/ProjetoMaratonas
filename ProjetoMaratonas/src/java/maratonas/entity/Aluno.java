@@ -42,6 +42,4 @@ public class Aluno extends AbstractEntity {
     public void setIdade(Integer idade){
         this.idade = idade;
     }
-    
-    
 }
