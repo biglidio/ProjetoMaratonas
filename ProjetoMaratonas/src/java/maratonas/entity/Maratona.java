@@ -24,8 +24,9 @@ import javax.persistence.TemporalType;
  * @author Administrador
  */
 
-@NamedQueries ({
-    @NamedQuery(name = "Maratona.listarMaratona", query = "select m from Maratona m where m.fk_cd_entidade = ?1 and m.id = ?2")
+
+@NamedQueries ({           
+    @NamedQuery(name = "Maratona.listarMaratona", query = "select m from Maratona m JOIN m.entidade e where e.maratona = ?1 and m.id = ?2")
 })
 @Entity
 public class Maratona extends AbstractEntity {

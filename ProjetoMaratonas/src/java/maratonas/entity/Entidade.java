@@ -20,8 +20,10 @@ import javax.persistence.OneToMany;
  *
  * @author Administrador
  */
-@NamedQueries({
-    @NamedQuery(name = "Entidade.listarTodas", query = "select e from Entidade c order by e.nm_entidade")
+
+@NamedQueries(
+        {
+    @NamedQuery(name = "Entidade.listarTodas", query = "select e from Entidade e order by e.nm_entidade")
 })
 @Entity
     public class Entidade extends AbstractEntity{
@@ -31,12 +33,12 @@ private String nm_entidade;
 private Integer vl_pontos;
 
 @OneToMany(cascade=CascadeType.ALL)
-@JoinColumn(name = "fk_cd_entidade")
+@JoinColumn(name = "fk_cd_maratona")
 private List<Maratona> maratona = new ArrayList<>();
 
 
 @OneToMany(cascade=CascadeType.ALL)
-@JoinColumn(name = "fk_cd_entidade")
+@JoinColumn(name = "fk_cd_aluno")
 private List<Aluno> aluno = new ArrayList<>();
 
     public List<Aluno> getAluno() {
